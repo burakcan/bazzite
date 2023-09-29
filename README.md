@@ -45,10 +45,12 @@ Bazzite is built from [ublue-os/main](https://github.com/ublue-os/main) and [ubl
 - Uses [Google's BBR TCP congestion control](https://github.com/google/bbr) by default.
 - [Input Remapper](https://github.com/sezanzeb/input-remapper) preinstalled and enabled. <sub><sup>(Available but default-disabled on the Deck variant)</sup></sub>
 - Bazzite Portal provides an easy way to install numerous applications and tweaks, including installing [CoreCtrl](https://gitlab.com/corectrl/corectrl) and [GreenWithEnvy](https://gitlab.com/leinardi/gwe).
-- [Nix](https://nixos.org/) package manager and [Fleek](https://getfleek.dev/) optionally available for install via Bazzite Portal.
+- [Nix](https://nixos.org/) package manager with [Fleek](https://getfleek.dev/) optionally available for install via Bazzite Portal.
+- [Brew](https://brew.sh/) package manager optionally available for install via Bazzite Portal.
 - [Waydroid](https://waydro.id/) preinstalled for running Android apps. Future releases will offer to set this up for you through Bazzite Portal. <sub><sup>(Not available on Nvidia builds)</sup></sub>
 - [OpenRGB](https://gitlab.com/CalcProgrammer1/OpenRGB) i2c-piix4 and i2c-nct6775 drivers for controlling RGB on certain motherboards.
 - [OpenRazer](https://openrazer.github.io) drivers built in, Select OpenRazer in Bazzite Portal or run `just install-openrazer` in a terminal to begin using it.
+- [OpenTabletDriver](https://opentabletdriver.net/) udev rules built in, with the full software suite installable via Bazzite Portal or by running `just install-opentabletdriver` in a terminal.
 - [GCAdapter_OC](https://github.com/hannesmann/gcadapter-oc-kmod) driver for overclocking Nintendo's Gamecube Controller Adapter to 1000hz polling.
 - Out of the box support for [Wooting](https://wooting.io/) keyboards.
 - Built in support for Southern Islands <sub><sup>(HD 7000)</sup></sub> and Sea Islands <sub><sup>(HD 8000)</sup></sub> AMD GPUs under the `amdgpu` driver.
@@ -99,7 +101,7 @@ Variant designed for usage as an alternative to SteamOS on the Steam Deck, and f
 - Built in support for Windows dual-boot thanks to Fedora's installation of GRUB being left intact.
 - Update break something? Easily roll back to the previous version of Bazzite thanks to `rpm-ostree`'s rollback functionality. You can even select previous images at boot.
 - Steam and Lutris preinstalled on the image as layered packages.
-- [Discover Overlay](https://github.com/trigg/Discover) for Discord pre-installed and automatically launches in both Gamemode and on the Desktop if Discord is installed.
+- [Discover Overlay](https://github.com/trigg/Discover) for Discord pre-installed and automatically launches in both Gamemode and on the Desktop if Discord is installed. [View the official documentation here](https://trigg.github.io/Discover/bazzite).
 - Exclusively uses ZRAM by default with the option to switch back to a swap file and set a custom size if desired. <sub><sup>(1GB by default)</sup></sub>
 - BFQ I/O scheduler to prevent I/O starvation when installing games or during background `duperemove` and `rmlint` processes.
 - TLS/SSL secured DNS and NTP by default. <sup><sub>(This is a handheld PC you're likely to use on random public networks after all)</sub></sup>

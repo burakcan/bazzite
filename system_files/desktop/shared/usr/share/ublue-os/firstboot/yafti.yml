@@ -46,17 +46,28 @@ screens:
           default: false
           packages:
           - Install Nix Package Support: sudo -A just --unstable install-nix
-          - Install Fleek: just --unstable install-fleek
-        Oversteer:
-          description: Application to control Logitech steering wheels
+          - Install Fleek (Requires Nix): just --unstable install-fleek
+        Brew Package Manager:
+          description: The missing package manager for macOS (or Linux)
           default: false
-          packages:
-          - Install Oversteer: just --unstable install-oversteer
+          package:
+          - Install Brew: sudo -A just --unstable install-brew
+          - Add Brew to shell: just --unstable install-brew-to-shell
         OpenRazer:
           description: Enables additional capabilities for Razer Hardware
           default: false
           packages:
           - Install OpenRazer: just --unstable install-openrazer
+        OpenTabletDriver:
+          description: Open source, cross-platform, user-mode tablet driver
+          default: false
+          packages:
+          - Install OpenTabletDriver: just --unstable install-opentabletdriver
+        Oversteer:
+          description: Application to control Logitech steering wheels
+          default: false
+          packages:
+          - Install Oversteer: just --unstable install-oversteer
         Solaar:
           description: Application to control Logitech Mice, Keyboards, and Trackpads
           default: false
@@ -142,6 +153,7 @@ screens:
           - SuperTux: org.supertuxproject.SuperTux
           - SuperTuxKart: net.supertuxkart.SuperTuxKart
           - TeamSpeak: com.teamspeak.TeamSpeak
+          - XIV Launcher (Final Fantasy XIV): dev.goats.xivlauncher
         Emulation:
           description: Play games like it's 1972
           default: false

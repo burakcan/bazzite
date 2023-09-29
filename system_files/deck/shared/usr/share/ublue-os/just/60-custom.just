@@ -94,6 +94,33 @@ install-fleek-themes:
     echo "Install fleek with just install-fleek before running just install-fleek-themes."
   fi
 
+# Install Homebrew for Linux
+install-brew:
+  echo "Installing homebrew ..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Add Homebrew to shell rc files
+install-brew-to-shell:
+  #!/usr/bin/env bash
+  set -euxo pipefail
+  echo "Adding homebrew to shell configuration"
+  touch $HOME/.zprofile
+  touch $HOME/.bash_profile
+  if grep -q "linuxbrew" $HOME/.zprofile
+  then
+    echo "Brew configuration already present in .zprofile"
+  else 
+    echo "Adding Brew configuration to .zprofile"
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  fi
+  if grep -q "linuxbrew" $HOME/.bash_profile
+  then
+    echo "Brew configuration already present in .bash_profile"
+  else 
+    echo "Adding Brew configuration to .bash_profile"
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.bash_profile
+  fi
+
 # Install Greenlight xCloud and xHome streaming AppImage
 get-greenlight:
   #!/usr/bin/env bash
@@ -417,5 +444,7 @@ fix-screenshare:
 # Add user to "input" group required by certain controller drivers
 add-user-to-input-group:
   #!/usr/bin/env bash
-  getent group input || sudo groupadd input
+  if ! grep -q "input" /etc/group; then
+    sudo bash -c 'grep "input" /lib/group >> /etc/group'
+  fi
   sudo usermod -a -G input $USER
